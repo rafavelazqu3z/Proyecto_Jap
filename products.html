@@ -41,7 +41,51 @@
     <p id="descripcion_cat"></p>
   </center>
   
-  <main class="pb-5 container">
+  <main class="container">
+    <div class="row">
+      <div class="col text-end">
+        <div class="btn-group btn-group-toggle mb-4" style="margin-right: 10px !important;" data-bs-toggle="buttons">
+          <input type="radio" class="btn-check" name="options" id="sortAsc">
+          <label class="btn btn-light" for="sortAsc"><img src="./img/dollarsingup.png" width="20px"></label>
+          <input type="radio" class="btn-check" name="options" id="sortDesc">
+          <label class="btn btn-light" for="sortDesc"><img src="./img/dollarsingdown.png" width="20px"></label>
+          <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+          <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 offset-lg-3 col-md-12 mb-1 container">
+        
+        <div class="row container p-0 m-0">
+          
+          <div class="col">
+            <p class="font-weight-normal text-end my-2">Precio.</p>
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+          </div>
+          <div class="col">
+            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+          </div>
+          <div class="col-6">
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" placeholder="Busca un Producto" aria-label="Recipient's username" aria-describedby="basic-addon2" id="busqueda">
+              <span class="input-group-text" id="basic-addon2"><i class="fas fa-search"></i></span>
+            </div>
+          </div>
+          <div class="col-3 p-0">
+
+            <div class="btn-group" role="group">
+
+              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+              <button class="btn btn-link btn-sm" id="clearRangeFilter">Limpiar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <div class="container" id="listado_auto">
       

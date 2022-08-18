@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", function(){
+    let userDrop = document.getElementById('userEmail');
+    userDrop.value = localStorage.getItem('email');
+
+    //NO LO TOQUES//
     document.getElementById("autos").addEventListener("click", function() {
         localStorage.setItem("catID", 101);
         window.location = "products.html"
@@ -12,3 +16,5 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 });
+
+

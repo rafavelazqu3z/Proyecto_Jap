@@ -36,6 +36,7 @@
   </head>
 
   <body background="img/fondojap1.jpg">
+  <form action="javascript:comprobarCampo()">
     <div class="container">
       <div class="row">
         <div class="col-md-5 mx-auto">
@@ -59,6 +60,7 @@
                   id="email"
                   aria-describedby="emailHelp"
                   placeholder="Ingrese su correo"
+                  required
                 />
               </div>
               <div class="form-group">
@@ -70,6 +72,7 @@
                   class="form-control"
                   aria-describedby="emailHelp"
                   placeholder="Ingrese contraseña"
+                  minlength="6"
                 />
               </div>
               <div class="col-md-12 text-center">
@@ -97,6 +100,7 @@
         </div>
       </div>
     </div>
+  </form>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
