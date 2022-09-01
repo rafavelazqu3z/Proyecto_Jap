@@ -1,6 +1,8 @@
 let rangeMin = document.getElementById("rangeFilterCountMin")
 let rangeMax = document.getElementById("rangeFilterCountMax")
 let searchBar = document.getElementById('busqueda')
+let catNames = {101: "Autos",102: "Juguetes",103: "Muebles",104: "Herramientas",105: "Computadoras",106: "Vestimenta",  107: "Electrodomésticos",108: "Deporte",109: "Celulares"
+}   ;
 let productList = ""
 
 
@@ -32,10 +34,10 @@ function productsClean(){
     showCategoriesList(productList);
     document.getElementById("rangeFilterCountMin").value = undefined;
     document.getElementById("rangeFilterCountMax").value = undefined;
-    search()
+    document.getElementById('busqueda').value= ''
 }
 
-
+//Filtro y busqueda
 function searchAndFilter(){
     let filteredProducts = productList;
     
@@ -47,7 +49,19 @@ function searchAndFilter(){
         product.cost < rangeFilterCountMax.value)};
     if(searchBar.value != ""){
         filteredProducts = filteredProducts.filter(product => 
-        product.name.toLowerCase().includes(busqueda.value.toLowerCase())|| product.description.toLowerCase().includes(busqueda.value.toLowerCase()))}
+        product.name.toLowerCase().includes(busqueda.value.toLowerCase()) || product.description.toLowerCase().includes(busqueda.value.toLowerCase()))
+    }else{
+            htmlContentToAppend = `
+        <div class="list-group-item">
+            <div class="row ">
+                
+                 <center><h5 class="m-3">No se encontro ningun producto</h5></center>  
+
+                
+            </div>
+        </div>
+        `
+        }
 
     showCategoriesList(filteredProducts)
 }
@@ -81,10 +95,13 @@ function showCategoriesList(list){
 
         document.getElementById("listado_auto").innerHTML = htmlContentToAppend; 
     }
-    document.getElementById("descripcion_cat").innerHTML = "Verás aqui todos los productos de la categoria "+ list.catName; 
+    catText() 
 }
 
-
+//Aqui sacamos el nombre de la categoria en la que nos encontramos
+function catText(){
+    document.getElementById("descripcion_cat").innerHTML = "Verás aqui todos los productos de la categoria "+ catNames[localStorage.getItem("catID")]
+}
 /* 
 EJECUCIÓN:
 
