@@ -31,6 +31,12 @@
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
           <li class="nav-item">
+            <div class="dropdown">
+              <input class="btn btn-secondary dropdown-toggle" type="button" id="userEmail" data-bs-toggle="dropdown" aria-expanded="false">
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="index.html" onclick="signOut();">Sign out</a></li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -45,11 +51,11 @@
     <div class="row">
       <div class="col text-end">
         <div class="btn-group btn-group-toggle mb-4" style="margin-right: 10px !important;" data-bs-toggle="buttons">
-          <input type="radio" class="btn-check" name="options" id="sortAsc">
+          <input type="radio" class="btn-check" name="options" id="sortAsc" onclick="productSortLess()">
           <label class="btn btn-light" for="sortAsc"><img src="./img/dollarsingup.png" width="20px"></label>
-          <input type="radio" class="btn-check" name="options" id="sortDesc">
+          <input type="radio" class="btn-check" name="options" id="sortDesc" onclick="productSortMore()">
           <label class="btn btn-light" for="sortDesc"><img src="./img/dollarsingdown.png" width="20px"></label>
-          <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
+          <input type="radio" class="btn-check" name="options" id="sortByCount" checked onclick="productSortRel()">
           <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
         </div>
       </div>
@@ -62,10 +68,10 @@
           <div class="col">
             <p class="font-weight-normal text-end my-2">Precio.</p>
           </div>
-          <div class="col">
+          <div class="col mb-1 w-25">
             <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
           </div>
-          <div class="col">
+          <div class="col mb-1">
             <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
           </div>
           <div class="col-6">
@@ -109,8 +115,10 @@
       <div></div>
     </div>
   </div>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
+  <script src="js/index.js"></script>
   <script src="js/products.js"></script>
 </body>
 
