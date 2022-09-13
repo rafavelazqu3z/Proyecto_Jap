@@ -5,7 +5,6 @@ let catNames = {101: "Autos",102: "Juguetes",103: "Muebles",104: "Herramientas",
 }   ;
 let productList = ""
 
-
 function sortByPriceDesc(a,b){
     return a.cost - b.cost  
 }
@@ -49,22 +48,18 @@ function searchAndFilter(){
         product.cost < rangeFilterCountMax.value)};
     if(searchBar.value != ""){
         filteredProducts = filteredProducts.filter(product => 
-        product.name.toLowerCase().includes(busqueda.value.toLowerCase()) || product.description.toLowerCase().includes(busqueda.value.toLowerCase()))
-    }else{
-            htmlContentToAppend = `
-        <div class="list-group-item">
-            <div class="row ">
-                
-                 <center><h5 class="m-3">No se encontro ningun producto</h5></center>  
-
-                
-            </div>
-        </div>
-        `
-        }
-
-    showCategoriesList(filteredProducts)
+        product.name.toLowerCase().includes(busqueda.value.toLowerCase()))
+    }
+    
+    showCategoriesList(filteredProducts) 
+    
 }
+function guardarIdProducto(id){
+    localStorage.setItem('prodID', id)
+    console.log(localStorage.getItem('prodID', id))
+    location.href = "product-info.html"
+}
+
 
 //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 function showCategoriesList(list){
@@ -73,7 +68,7 @@ function showCategoriesList(list){
         let category = list[i];
         
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <div onclick="guardarIdProducto(`+category.id+`)" class="list-group-item list-group-item-action">
             <div class="row">
                 <div class="col-3">
                 <img src="` + category.image + `" alt="product image" class="img-thumbnail">
@@ -119,8 +114,11 @@ EJECUCIÓN:
                 showCategoriesList(productList);
             }
         });
+        
     });
 
     document.getElementById('busqueda').addEventListener('input', searchAndFilter);
     document.getElementById("rangeFilterCountMin").addEventListener('input', searchAndFilter);
     document.getElementById("rangeFilterCountMax").addEventListener('input', searchAndFilter);
+
+    
