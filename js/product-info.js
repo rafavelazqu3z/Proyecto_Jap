@@ -65,10 +65,10 @@ function showProductInfo(productInfo,products,comentariosProd ){
     switch(comentariosProd[comment].score){
         case 1:
             comments += `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star "></span>
-        <span class="fa fa-star "></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
+        <span class="far fa-star "></span>
+        <span class="far fa-star "></span>
+        <span class="far fa-star"></span>
+        <span class="far fa-star"></span>
         </p>
         <p>`+comentariosProd[comment].description+`</p>
             </div>
@@ -80,9 +80,9 @@ function showProductInfo(productInfo,products,comentariosProd ){
         case 2:
             comments += `<span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
-        <span class="fa fa-star "></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
+        <span class="far fa-star "></span>
+        <span class="far fa-star"></span>
+        <span class="far fa-star"></span>
         </p>
         <p>`+comentariosProd[comment].description+`</p>
             </div>
@@ -96,8 +96,8 @@ function showProductInfo(productInfo,products,comentariosProd ){
             comments += `<span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
+        <span class="far fa-star"></span>
+        <span class="far fa-star"></span>
         </p>
         <p>`+comentariosProd[comment].description+`</p>
             </div>
@@ -112,7 +112,7 @@ function showProductInfo(productInfo,products,comentariosProd ){
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
+            <span class="far fa-star"></span>
             </p>
             <p>`+comentariosProd[comment].description+`</p>
             </div>
@@ -171,10 +171,10 @@ btnComentario.addEventListener('click', function(e){
     switch(puntuacion){
         case "1":
             comments += `<span class="fa fa-star checked"></span>
-        <span class="fa fa-star "></span>
-        <span class="fa fa-star "></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
+        <span class="far fa-star "></span>
+        <span class="far fa-star "></span>
+        <span class="far fa-star"></span>
+        <span class="far fa-star"></span>
         </p>
         <p>`+comentario+`</p>
             </div>
@@ -186,9 +186,9 @@ btnComentario.addEventListener('click', function(e){
         case "2":
             comments += `<span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
-        <span class="fa fa-star "></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
+        <span class="far fa-star "></span>
+        <span class="far fa-star"></span>
+        <span class="far fa-star"></span>
         </p>
         <p>`+comentario+`</p>
             </div>
@@ -202,8 +202,8 @@ btnComentario.addEventListener('click', function(e){
             comments += `<span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
         <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
+        <span class="far fa-star"></span>
+        <span class="far fa-star"></span>
         </p>
         <p>`+comentario+`</p>
             </div>
@@ -218,7 +218,7 @@ btnComentario.addEventListener('click', function(e){
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
+            <span class="far fa-star"></span>
             </p>
             <p>`+comentario+`</p>
             </div>
