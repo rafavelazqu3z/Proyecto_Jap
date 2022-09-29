@@ -1,6 +1,7 @@
 let productInfo =[];
 let comentariosProd = [];
 let products = [];
+let productsRel = "";
 let comments = "";
 let estrellas = 0;
 let d = new Date();
@@ -11,6 +12,12 @@ let hour = d.getHours();
 let min = d.getMinutes();
 let sec = d.getSeconds();
 let dateStr = year +"-"+month+"-"+date+" "+hour+":"+min+":"+sec;
+
+function guardarIdProducto(id){
+    localStorage.setItem('prodID', id)
+    console.log(localStorage.getItem('prodID', id))
+    location.href = "product-info.html"
+}
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(PRODUCT_INFO_URL).then(function(resultObj){
@@ -36,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 });
 
 function showProductInfo(productInfo,products,comentariosProd ){
+    // PRODUCTOS
     let name = document.getElementById('porductName')
     let desc = document.getElementById('productDesc')
     let cost = document.getElementById('productCost')
@@ -50,11 +58,42 @@ function showProductInfo(productInfo,products,comentariosProd ){
     categoria.innerHTML = products.catName
 
     for (let i = 0; i < productInfo.images.length; i++) {
-        imgs += '<img class="img" src="'+ productInfo.images[i] +'" width="240px" height="190px" Style="padding:10px; border-radius:20px;">'
+        if(i == 0){
+        imgs += `<div class="carousel-item active">
+                <img src="${productInfo.images[i]}" class="d-block">
+            </div>`
+        }else{
+            imgs += `<div class="carousel-item">
+                <img src="${productInfo.images[i]}" class="d-block" >
+            </div>`
+        }
         document.getElementById('imagenesIlus').innerHTML = imgs;
     };
 
+    //PRODUCTOS RELACIONADOS
     
+
+    for(let productsRelated of productInfo.relatedProducts){
+            
+                productsRel+=`
+                <div class="row" style="display:inline-block;" onclick="guardarIdProducto(`+productsRelated.id+`)">
+                    <div  class="col-md-2">
+                    <div class="card text-left m-4" style="width: 18rem;  cursor:pointer;">
+                        <img src="`+productsRelated.image+`" class="card-img-top">
+                    <div class="card-body">
+                        <h5>`+productsRelated.name+`</h5>
+                    </div>
+                </div>
+            </div>
+        </div>`
+            
+            console.log(productsRelated)
+            document.getElementById("productos_rel").innerHTML= productsRel;
+
+    };
+    
+
+    //COMENTARIOS
 
     for (let comment in comentariosProd){
         comments +=`<div class="card">
@@ -150,11 +189,16 @@ function showProductInfo(productInfo,products,comentariosProd ){
           
         `
         document.getElementById('seccionComentarios').innerHTML = comments;
+        break;
     }
        
     }
+
+
+    
 }
 
+//MI COMENTARIO
 let btnComentario = document.getElementById('btnComentar');
 
 

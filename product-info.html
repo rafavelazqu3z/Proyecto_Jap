@@ -34,7 +34,9 @@
             <div class="dropdown">
               <input class="btn btn-secondary dropdown-toggle" type="button" id="userEmail" data-bs-toggle="dropdown" aria-expanded="false">
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="index.html" onclick="signOut();">Sign out</a></li>
+                <li><a class="dropdown-item" href="cart.html"">Mi Carrito</a></li>
+                <li><a class="dropdown-item" href="my-profile.html"">Mi perfil</a></li>
+                <li><a class="dropdown-item" href="index.html" onclick="signOut();">Cerrar Sesion</a></li>
               </ul>
             </div>
           </li>
@@ -56,8 +58,18 @@
       <h5><b>Cantidad de vendidos</b></h5>
       <p id="productCount"></p>
       <h5><b>Imagenes Ilustrativas</b></h5>
-      <div id="imagenesIlus"></div>
-
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="width: 700px;">
+        <div class="carousel-inner" id="imagenesIlus">
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
       <br><br>
       <h4>Comentarios</h4>
       <div id="seccionComentarios">
@@ -79,6 +91,14 @@
         </datalist>
         <br> <br>
         <input class="btn btn-primary" type="submit" id="btnComentar">
+      </div>
+      <br>
+      <hr>
+      <div class="prodRelated">
+        <h3>Productos Relacionados</h3>
+        <div  id="productos_rel">
+          
+        </div>
       </div>
     </div>
   </main>
