@@ -1,4 +1,4 @@
-let productInfo =[];
+let productInfo = [];
 let comentariosProd = [];
 let products = [];
 let productsRel = "";
@@ -42,15 +42,26 @@ document.addEventListener("DOMContentLoaded", function(e){
     
 });
 
+
+let botonCompra = document.getElementById('btnCompra')
+
+botonCompra.addEventListener("click", function(e){
+
+    localStorage.setItem('article',JSON.stringify(productInfo))
+    window.location = 'cart.html'
+    
+})
+
+
+
 function showProductInfo(productInfo,products,comentariosProd ){
     // PRODUCTOS
-    let name = document.getElementById('porductName')
+    let name = document.getElementById('productName')
     let desc = document.getElementById('productDesc')
     let cost = document.getElementById('productCost')
     let count = document.getElementById('productCount')
     let categoria = document.getElementById('productCat')
     let imgs = "";
-
     name.innerHTML = productInfo.name;
     desc.innerHTML = productInfo.description
     cost.innerHTML = productInfo.currency+" "+productInfo.cost
