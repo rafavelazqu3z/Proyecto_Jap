@@ -34,7 +34,9 @@ document.addEventListener("DOMContentLoaded", function(e){
         {
             cartInfo = resultObj.data
             ShowCartInfo(cartInfo)
-            guardarProductoCarrito()
+            if(localStorage.getItem('article')){
+                guardarProductoCarrito()
+             }
             precioCarrito()
             cantidad = document.getElementById('cantProduct')
             cantidad.addEventListener("click", function(e){
@@ -69,7 +71,12 @@ function ShowCartInfo(cartInfo){
 function guardarProductoCarrito(){
     let productCart = ""
     let productInfo = JSON.parse(localStorage.getItem('article'));
-    productCart+=`<div class="row">
+    if(productInfo.id == cartInfo.articles[0].id){
+        document.getElementById('cantProduct').value = 2;
+        document.getElementById('totalProd').innerHTML="<b>"+cartInfo.articles[0].currency+" "+cartInfo.articles[0].unitCost*2+"</b>"
+    }else{
+        
+    productCart+=`<div class="row" id="productoAgregado">
     <img src="`+productInfo.images[0]+`" style="width: 90px; height:40px;">
     <div class="col-md-1" style="width: 120px;">
       `+productInfo.name+`
@@ -83,9 +90,24 @@ function guardarProductoCarrito(){
     <div class="col-md-1" id="precioTotalArt">
     <b>`+productInfo.currency+" "+productInfo.cost+`</b>
     </div>
+    <div class="col-md-1">
+    <button type="button" class="btn btn-outline-danger fa fa-trash" onclick="eliminarProductoCarrito()"></button>
+    </div>
     </div>
     `
     document.getElementById('articulos').innerHTML += productCart;
+    }
+
+
+    
+
+   
+}
+
+function eliminarProductoCarrito(){
+    localStorage.removeItem('article')
+    document.getElementById('productoAgregado').innerHTML = ""
+    precioCarrito()
 }
 
 
@@ -100,19 +122,34 @@ function precioCarrito(){
     let premium = document.getElementById('flexRadioDefault1');
     let express = document.getElementById('flexRadioDefault2');
     let standar = document.getElementById('flexRadioDefault3');
-    let cantidadProducto = document.getElementById('inputCantidad').value
-    let precioProducto = producto.cost * cantidadProducto
-    if(producto.currency == "UYU"){
-        let productoEnDolares = producto.cost/= 42
-        precioProducto = Math.trunc(productoEnDolares * cantidadProducto)
-    }
     let precioAutoPreCargado = cartInfo.articles[0].unitCost*inputAutoPreCargado
+    let precio = "";
+
+
+    if(producto){
+        if(producto.id !== cartInfo.articles[0].id){
+        let cantidadProducto = document.getElementById('inputCantidad').value
+        let precioProducto = producto.cost * cantidadProducto
+        if(producto.currency == "UYU"){
+            let productoEnDolares = producto.cost/= 42
+            precioProducto = Math.trunc(productoEnDolares * cantidadProducto)
+        }
+        precio = precioAutoPreCargado+precioProducto;
+    
+        }else{
+            
+            precio = precioAutoPreCargado
+        }
+        
+    }else{
+        precio = precioAutoPreCargado
+    }   
+    
+   
     let subtotalCarrito = document.getElementById('costoProdCarr');
     let costeEnvioCarr = document.getElementById('costeEnvioCarr');
     let totalCarrito = document.getElementById('totalCosteCarr');
-    precio = precioAutoPreCargado+precioProducto;
     
-
     if (premium.checked){
         envio = Math.trunc(precio * 0.15)
         costeEnvioCarr.innerHTML = "USD " + envio
@@ -122,6 +159,7 @@ function precioCarrito(){
     premium.addEventListener("click", function(e){
         envio = Math.trunc(precio * 0.15)
         costeEnvioCarr.innerHTML = "USD " + envio
+        total= precio+envio
         totalCarrito.innerHTML = "USD " + total;
     })
 
